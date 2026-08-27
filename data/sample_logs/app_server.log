@@ -1,0 +1,15 @@
+2026-08-27 01:02:11 INFO  Server started on port 8080
+2026-08-27 01:05:44 INFO  User session created: user_id=4821
+2026-08-27 01:12:09 WARNING Slow query detected (2.4s): SELECT * FROM transactions WHERE account_id=?
+2026-08-27 01:18:37 INFO  User session created: user_id=4822
+2026-08-27 01:20:02 ERROR Database connection pool exhausted (max=20, active=20). Rejecting new connections.
+2026-08-27 01:20:03 ERROR Database connection pool exhausted (max=20, active=20). Rejecting new connections.
+2026-08-27 01:22:15 INFO  Connection pool recovered, active=12
+2026-08-27 01:30:51 WARNING Disk usage at 87% on volume /var/log
+2026-08-27 01:41:22 ERROR NullReferenceException in PaymentProcessor.ProcessTransfer(): object reference not set
+2026-08-27 01:41:23 INFO  Transfer retried successfully: txn_id=88213
+2026-08-27 01:55:08 CRITICAL Authentication service unreachable: connection timed out after 30000ms
+2026-08-27 01:55:40 CRITICAL Authentication service unreachable: connection timed out after 30000ms
+2026-08-27 02:01:19 INFO  Authentication service recovered
+2026-08-27 02:14:03 WARNING High memory usage on app-server-02: 91%
+2026-08-27 02:30:00 INFO  Scheduled nightly batch job started
