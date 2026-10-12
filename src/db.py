@@ -109,12 +109,12 @@ def update_ticket_status(ticket_id, new_status, note=None, agent_id=None):
 
     if agent_id is not None:
         conn.execute(
-            "UPDATE tickets SET status = ?, agent_id = ?, resolved_at = COALESCE(?, resolved_at) WHERE ticket_id = ?",
+            "UPDATE tickets SET status = ?, agent_id = ?, resolved_at = ? WHERE ticket_id = ?",
             (new_status, agent_id, resolved_at, ticket_id),
         )
     else:
         conn.execute(
-            "UPDATE tickets SET status = ?, resolved_at = COALESCE(?, resolved_at) WHERE ticket_id = ?",
+            "UPDATE tickets SET status = ?, resolved_at = ? WHERE ticket_id = ?",
             (new_status, resolved_at, ticket_id),
         )
 

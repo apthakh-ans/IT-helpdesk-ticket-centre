@@ -81,6 +81,20 @@ def test_is_breached_false_for_past_sla_when_resolved(fresh_db):
     assert fresh_db.is_breached(past, "Resolved") is False
 
 
+def test_reopening_resolved_ticket_clears_resolved_at(fresh_db):
+    cid = fresh_db.add_customer("Test Customer", "test@example.com")
+    ticket_id = fresh_db.create_ticket(cid, "Subject", "Desc", "P2")
+
+    fresh_db.update_ticket_status(ticket_id, "Resolved", note="Fixed")
+    resolved = fresh_db.list_tickets()[0]
+    assert resolved["resolved_at"] is not None
+
+    fresh_db.update_ticket_status(ticket_id, "Open", note="Customer says it broke again")
+    reopened = fresh_db.list_tickets()[0]
+    assert reopened["status"] == "Open"
+    assert reopened["resolved_at"] is None
+
+
 def test_list_tickets_filters_by_status_and_priority(fresh_db):
     cid = fresh_db.add_customer("Test Customer", "test@example.com")
     t1 = fresh_db.create_ticket(cid, "A", "desc", "P1")
